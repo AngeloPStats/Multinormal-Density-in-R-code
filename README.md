@@ -46,7 +46,7 @@ persp3D(x1,x2,zh.funcion,col = "blue", main="h function surface")# color surface
 
 ```
 
-**How about at point x=2**
+**FOR 2D**
 
 
 The pdf for a bi-variate 2D or (p=2) normal density at a point $x =(x_{1}, x_{2})$ is given by
