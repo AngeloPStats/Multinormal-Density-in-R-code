@@ -85,6 +85,7 @@ Efficient R code can plot theoretical concepts for a multivariate normal density
 
 **FOR 2D**
 
+*Here is the Theory:*
 
 The pdf for a bi-variate 2D or (p=2) normal density at a point $x =(x_{1}, x_{2})$ is given by
 
