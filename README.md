@@ -3,51 +3,91 @@ Efficient R code can plot theoretical concepts for a multivariate normal density
 
 ***Download***
 
-```{r, include=TRUE}
-# Let's start by downloading two main packages in R Studio
 
-library(plot3D)# Plots 3D
-library(mvtnorm)# Computes multivariate normal densities
-```
+***Let's start by downloading two main packages in R Studio***
 
-```{r}
-# Now, to set up our grid-2D we can create a range of values of x1 and x2
+*Plots 3D*
 
-x1 <- seq(-pi/4, pi/4, len=30)
-x2 <- seq(pi/4,3*pi/4, len=30)
-
-```
-
-```{r}
-# This is because the normal density varies from -3 to 3, approximately
-# The next step is to form two 2D functions to get a 3D plot
+    ```{r warning=FALSE}
+    
+    install.packages("plot3D")
+    
+    library(plot3D)
+    
+    ```
 
 
-f.function <- function(x1,x2){cos(x1*x2)}
-h.function <- function(x1,x2){1-((pi*x1)^2)/8}
+*Computes multivariate normal densities*
 
-```
+    ```{r warning=FALSE}
+    install.packages("mvtnorm")
+    
+    library(mvtnorm)
+    
+    ```
 
-***Plot in 3D***
+*Now, to set up our grid-2D we can create a range of values of x1 and x2*
+
+    ```{r warning=FALSE}
+    x1 = seq(-pi/4, pi/4, len=30)
+    
+    x2 = seq(pi/4,3*pi/4, len=30)
+    
+    ```
 
 
-```{r}
+*This is because the normal density varies from -3 to 3, approximately*
 
-#Now we can use "persp3D" and "outer". 
-#They are part of the previously downloaded package
+*The next step is to form two 2D functions to get a 3D plot*
 
-zf.function <- outer(x1,x2,f.function )
-zh.function <- outer(x1,x2,h.function )
+    ```{r warning=FALSE}
+    f.function = function(x1,x2){cos(x1*x2)}
+    
+    h.function = function(x1,x2){1-((pi*x1)^2)/8}
+    
+    ```
 
-par(mfrow = c(1,2))# This is to organize the plots in a matrix view
+*Now we can use "persp3D" and "outer".*
 
-persp3D(x1,x2,zf.function,col = "red", main="f function surface")# color surface of f is red
-persp3D(x1,x2,zh.funcion,col = "blue", main="h function surface")# color surface of h is blue
+*They are part of the previously downloaded package*
 
-```
+**Plot in 3D**
+
+    ```{r warning=FALSE}
+    
+    zf.function = outer(x1,x2,f.function )
+    
+    zh.function = outer(x1,x2,h.function )
+    
+    ```
+
+
+*This is to organize the plots in a matrix view*
+
+    ```{r warning=FALSE}
+    
+    par(mfrow = c(1,2))
+    
+    ```
+
+*color surface of f is red*
+
+*color surface of h is blue*
+
+    ```{r warning=FALSE}
+    persp3D(x1,x2,zf.function,col = "red", main="f function surface")
+    
+    persp3D(x1,x2,zh.function,col = "blue", main="h function surface")
+    
+    ```
+
+*.rmd linguist-language=R*
+
 
 **FOR 2D**
 
+'''
+Here is the theory:
 
 The pdf for a bi-variate 2D or (p=2) normal density at a point $x =(x_{1}, x_{2})$ is given by
 
@@ -193,3 +233,5 @@ is of the form
 $f(x) = f(x_{0}) + (x-x_{0})^T \nabla f(x_{0}) +1/2(x-x_{0})^T \nabla^{2} f(x_{0})(x-x_{0}) + R$ 
 $f(x)=\frac{1}{2\pi\sqrt{|\Sigma|}} + 0 +( \frac{-1}{2})(\frac{1}{4\pi\sqrt{|\Sigma|^{3}}}) [2\sigma_{22}(x_{1}-u_{1})^2- 4\sigma_{21}(x_{1}-u_{1})(x_{2}-u_{2})+2\sigma_{11}(x_{2}-u_{2})^2 ]$
 $\boxed{f(x)= (2\pi\sqrt{|\Sigma|})^{-1} +(4\pi\sqrt {|\Sigma|^{3} })^{-1}    [-\sigma_{22}(x_{1}-u_{1})^2+ 2\sigma_{21}(x_{1}-u_{1})(x_{2}-u_{2})-\sigma_{11}(x_{2}-u_{2})^2 + R]}$
+
+'''
