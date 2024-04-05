@@ -47,7 +47,7 @@ Efficient R code can plot theoretical concepts for a multivariate normal density
     
     ```
 
-*Now we can use "persp3D" and "outer". *
+*Now we can use "persp3D" and "outer".*
 
 *They are part of the previously downloaded package*
 
